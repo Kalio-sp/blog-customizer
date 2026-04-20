@@ -5,7 +5,7 @@
 	border: 1px solid #000000;
 }
 
-.item {
+.option {
 	position: relative;
 	display: block;
 }
@@ -32,21 +32,19 @@
 	cursor: pointer;
 }
 
-/* Убираем бордер у последнего в radiogroup, чтобы не было двойного бордера */
-
 .label:hover {
 	background-color: #ffedab;
 }
 
-.item[data-checked='true'] .label {
+.optionChecked .label {
 	background: var(--gold, #ffc802);
 }
 
-.item:last-child .label {
+.option:last-child .label {
 	border: none;
 }
 
-.item[data-checked='true'] .label:hover {
+.optionChecked .label:hover {
 	background: var(--gold, #ffc802);
 }
 
