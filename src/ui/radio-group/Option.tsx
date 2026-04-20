@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { ChangeEvent, FC } from 'react';
-
+import { ChangeEvent } from 'react';
 import { OptionType } from 'src/constants/articleProps';
+import { Text } from 'src/ui/text';
 
 import styles from './RadioGroup.module.scss';
 
@@ -12,18 +12,13 @@ type OptionProps = {
 	onChange?: (option: OptionType) => void;
 };
 
-export const Option: FC<OptionProps> = ({
-	option,
-	name,
-	selected,
-	onChange,
-}) => {
+export const Option = ({ option, name, selected, onChange }: OptionProps) => {
 	const { value, title } = option;
 	const isChecked = value === selected.value;
 
-	const handleChange = (evt: ChangeEvent<HTMLInputElement>) => {
-		if (evt.target.checked && onChange) {
-			onChange(option);
+	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+		if (event.target.checked) {
+			onChange?.(option);
 		}
 	};
 
@@ -37,7 +32,11 @@ export const Option: FC<OptionProps> = ({
 				checked={isChecked}
 				onChange={handleChange}
 			/>
-			<span className={styles.label}>{title}</span>
+			<span className={styles.label}>
+				<Text size={18} uppercase>
+					{title}
+				</Text>
+			</span>
 		</label>
 	);
 };

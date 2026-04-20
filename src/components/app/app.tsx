@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { CSSProperties, useState } from 'react';
 
-import { Article } from 'src/components/article';
-import { ArticleParamsForm } from 'src/components/article-params-form';
+import { Article } from '../article/Article';
+import { ArticleParamsForm } from '../article-params-form/ArticleParamsForm';
 import {
 	ArticleStateType,
 	defaultArticleState,
-} from 'src/constants/articleProps';
+} from './../../constants/articleProps';
 
 import styles from './app.module.scss';
 
@@ -14,8 +14,8 @@ export const App = () => {
 		useState<ArticleStateType>(defaultArticleState);
 
 	return (
-		<div
-			className={styles.app}
+		<main
+			className={styles.main}
 			style={
 				{
 					'--font-family': articleState.fontFamilyOption.value,
@@ -23,10 +23,10 @@ export const App = () => {
 					'--font-color': articleState.fontColor.value,
 					'--container-width': articleState.contentWidth.value,
 					'--bg-color': articleState.backgroundColor.value,
-				} as React.CSSProperties
+				} as CSSProperties
 			}>
 			<ArticleParamsForm onApply={setArticleState} onReset={setArticleState} />
 			<Article />
-		</div>
+		</main>
 	);
 };
